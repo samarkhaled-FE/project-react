@@ -41,7 +41,6 @@ export default function Register() {
     }
   };
 
-  // التحقق من البيانات باستخدام Joi
   const validateFormData = () => {
     const schema = joi.object({
       first_name: joi.string().alphanum().required().min(2).max(10),
@@ -67,7 +66,6 @@ export default function Register() {
     return schema.validate(user, { abortEarly: false });
   };
 
-  // تحديث القيم عند إدخال البيانات
   const getInputValue = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -75,18 +73,15 @@ export default function Register() {
   return (
     <div className="w-75 m-auto py-5">
       <h2>Registration Form</h2>
-      {/* عرض قائمة الأخطاء */}
       {errorsList.map((error, index) => (
         <div key={index} className="alert alert-danger p-2">
           {error.message}
         </div>
       ))}
 
-      {/* عرض رسالة الخطأ العامة */}
       {errorMsg && <div className="alert alert-danger p-2">{errorMsg}</div>}
 
       <form onSubmit={submitFormData}>
-        {/* First Name */}
         <div className="input-data my-2">
           <label htmlFor="first_name">First Name</label>
           <input
@@ -97,7 +92,6 @@ export default function Register() {
           />
         </div>
 
-        {/* Last Name */}
         <div className="input-data my-2">
           <label htmlFor="last_name">Last Name</label>
           <input
@@ -108,7 +102,6 @@ export default function Register() {
           />
         </div>
 
-        {/* Age */}
         <div className="input-data my-2">
           <label htmlFor="age">Age</label>
           <input
@@ -130,7 +123,6 @@ export default function Register() {
           />
         </div>
 
-        {/* Password */}
         <div className="input-data my-2">
           <label htmlFor="password">Password</label>
           <input
@@ -141,7 +133,6 @@ export default function Register() {
           />
         </div>
 
-        {/* زر التسجيل */}
         <button className="btn btn-warning my-3 float-end">Register</button>
       </form>
     </div>

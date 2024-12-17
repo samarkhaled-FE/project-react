@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [user, setUser] = useState({
-    first_name: "",
-    last_name: "",
+    firstName: "",
+    lastName: "",
     age: "",
     email: "",
     password: "",
@@ -26,7 +26,7 @@ export default function Register() {
     } else {
       try {
         const { data } = await axios.post(
-          "https://route-egypt-api.herokuapp.com/signup",
+          "http://localhost:3001/signup",
           user
         );
 
@@ -43,8 +43,8 @@ export default function Register() {
 
   const validateFormData = () => {
     const schema = joi.object({
-      first_name: joi.string().alphanum().required().min(2).max(10),
-      last_name: joi.string().alphanum().required().min(2).max(10),
+      firstName: joi.string().alphanum().required().min(2).max(10),
+      lastName: joi.string().alphanum().required().min(2).max(10),
       age: joi.number().required().min(20).max(80),
       email: joi
         .string()
@@ -83,22 +83,22 @@ export default function Register() {
 
       <form onSubmit={submitFormData}>
         <div className="input-data my-2">
-          <label htmlFor="first_name">First Name</label>
+          <label htmlFor="firstName">First Name</label>
           <input
             onChange={getInputValue}
             type="text"
             className="form-control my-2"
-            name="first_name"
+            name="firstName"
           />
         </div>
 
         <div className="input-data my-2">
-          <label htmlFor="last_name">Last Name</label>
+          <label htmlFor="lastName">Last Name</label>
           <input
             onChange={getInputValue}
             type="text"
             className="form-control my-2"
-            name="last_name"
+            name="lastName"
           />
         </div>
 
